@@ -17,6 +17,7 @@ use App\Http\Controllers\ApiController;
 
 Route::get('/counter', [ApiController::class, 'index']);
 Route::post('/counter/save', [ApiController::class, 'create']);
+Route::post('/counter/coba/save', [ApiController::class, 'upstore']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

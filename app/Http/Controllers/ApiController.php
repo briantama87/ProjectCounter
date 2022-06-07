@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Counter;
 use Response;
+use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller
 {
@@ -84,7 +85,44 @@ class ApiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    }
+
+    public function upstore(Request $request)
+    {
+        $snfg = $request->snfg;
+
+        $counter = Counter::where('snfg', '=', $snfg)->first();
+
+        /// kondisi ketika snfg sudah ada di tabel
+        if ($counter == null) {
+            $counters = New Counter;
+            $counters->snfg = $request->snfg;
+            $counters->line = $request->line;
+            $counters->lolos = $request->lolos;
+            $counters->reject = $request->reject;
+            if ($counters->save()){
+                return response()->json('Data berhasil ditambahkan!');
+            }
+        } else {
+            // kondisi ketika snfg belum ada ditabel
+            $counter = DB::table('counters')
+                ->select('id')
+                ->where('snfg', $snfg)
+                ->get();
+            foreach ($counter as $counters) {
+            }
+
+            $counters = Counter::find($counters->id);
+            $counters->snfg = $request->snfg;
+            $counters->line = $request->line;
+            $counters->lolos = $request->lolos;
+            $counters->reject = $request->reject;
+            if ($counters->save()) {
+                return response()->json('Data berhasil diupdate!');
+
+            }
+
+        }
     }
 
     /**
