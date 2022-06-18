@@ -111,7 +111,7 @@ class ApiController extends Controller
                 return response()->json('error');
             }
         } else {
-            // insert data jika sudah adaa
+            // insert data jika sudah adaa dan tidak null
             $snfg_last = $last->snfg;
             $tot_reject = $last->total_reject;
             $tot_lolos = $last->total_lolos;
