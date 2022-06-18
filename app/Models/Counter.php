@@ -14,5 +14,7 @@ class Counter extends Model
         'line',
         'lolos',
         'reject',
+        'total_reject',
+        'total_lolos',
     ];
 }

@@ -17,8 +17,10 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('snfg');
             $table->string('line');
-            $table->integer('lolos')->nullable();
-            $table->integer('reject')->nullable();
+            $table->tinyInteger('reject')->nullable();
+            $table->tinyInteger('lolos')->nullable();
+            $table->integer('total_reject')->nullable();
+            $table->integer('total_lolos')->nullable();
             $table->timestamps();
         });
     }
