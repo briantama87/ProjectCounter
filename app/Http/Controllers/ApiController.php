@@ -112,6 +112,8 @@ class ApiController extends Controller
             }
         } else {
             // insert data jika sudah adaa dan tidak null tess fosfo
+            // insert data jika sudah adaa dan tidak null
+            // coba 1 22
             $snfg_last = $last->snfg;
             $tot_reject = $last->total_reject;
             $tot_lolos = $last->total_lolos;
