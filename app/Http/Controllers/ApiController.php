@@ -123,14 +123,20 @@ class ApiController extends Controller
                 $counters->line = $request->line;
                 $counters->reject = ($request->total_reject) - $tot_reject;
                 $counters->lolos = ($request->total_lolos) - $tot_lolos;
+                if($counters->reject < 0 || $counters->lolos < 0) {
+                    $counters->reject = 0;
+                    $counters->lolos=0;
+                }
                 $counters->total_reject = $request->total_reject;
                 $counters->total_lolos = $request->total_lolos;
-                if ($counters->save()) {
-                    return response()->json('Data berhasil simpan baru');
-                } else {
-                    return response()->json('error simpan baru');
-                }
+                $counters->save();
+                // if ($counters->save() ) {
+                //     return response()->json('Data berhasil simpan baru');
+                // } else {
+                //     return response()->json('error simpan baru');
+                // }
             } else {
+
                 return response()->json('data sudah ada');
             }
         }
