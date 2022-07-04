@@ -106,7 +106,7 @@ class ApiController extends Controller
             $counters->total_reject = 0;
             $counters->total_lolos = 0;
             if ($counters->save()) {
-                return response()->json('Data berhasil disimpancukkk!');
+                return response()->json('Data berhasil disimpan!');
             } else {
                 return response()->json('error');
             }
